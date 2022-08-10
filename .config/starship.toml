@@ -1,0 +1,53 @@
+scan_timeout = 100
+command_timeout = 1000
+
+add_newline = false
+success_symbol = " [⬧](red)[❯](cyan)[❯](purple)"
+error_symbol = " [⬧](cyan)[❯](red)[❯](cyan)"
+
+[package]
+disabled = false
+
+[hostname]
+format = "[$hostname]($style)[:](white)"
+style = "bold white"
+ssh_only = false
+disabled = false
+
+[username]
+format = "[$user]($style_user)[@](white)"
+style_user = "bold white"
+show_always = true
+disabled = false
+
+[directory]
+truncation_length = 10
+truncate_to_repo = false
+truncation_symbol = ""
+style = "white"
+
+[jobs]
+format = "[$symbol]($style)"
+symbol_threshold = 4
+number_threshold = 4
+disabled = false
+
+[status]
+disabled = false
+
+[git_branch]
+style = "white"
+
+[git_status]
+style = "white"
+disabled = false
+
+[docker_context]
+disabled = false
+
+[time]
+disabled = true
+
+[shell]
+disabled = true
+
