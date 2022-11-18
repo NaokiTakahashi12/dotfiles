@@ -92,7 +92,11 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 
-set clipboard=unnamed,autoselect
+if has('nvim')
+    set clipboard=unnamed
+else
+    set clipboard=unnamed,autoselect
+endif
 set scrolloff=5
 set visualbell t_vb=
 set virtualedit=onemore
