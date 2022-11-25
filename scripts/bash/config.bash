@@ -4,9 +4,15 @@ then
     set -o emacs
 fi
 # Homebrew
-if type "brew" > /dev/null 2>&1
+if [ -f /opt/homebrew/bin/brew ]
 then
     eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [ -f /usr/local/bin/brew ]
+then
+    eval "$(/usr/local/bin/brew shellenv)"
+fi
+if type "brew" > /dev/null 2>&1
+then
     export PATH="$PATH:$(brew --prefix)/bin"
     export PATH="$PATH:$(brew --prefix)//Cellar/cython/0.29.32*/bin"
     export PATH="$PATH:$(brew --prefix)/opt/qt@5/bin"
