@@ -11,12 +11,9 @@ highlight StatusLine   term=NONE cterm=NONE ctermfg=black ctermbg=white
 autocmd quickfixcmdpost *grep* cwindow
 autocmd quickfixcmdpost *make* copen
 autocmd BufNewFile,BufRead * match ZenkakuSpace / /
-autocmd FileType c,cpp,cc,cxx,h,hpp,hxx,hh,perl,html,py,sh,jar,php,rs set cindent
-autocmd FileType yaml,yml setlocal ts=2 sts=2 sw=2 expandtab
-autocmd FileType repos setlocal ts=2 sts=2 sw=2 expandtab
-autocmd FileType xml setlocal ts=2 sts=2 sw=2 expandtab
-autocmd FileType urdf,launch setlocal ts=2 sts=2 sw=2 expandtab
-autocmd FileType toml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType c,cpp,cc,cxx,h,hpp,hxx,hh setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType perl,html,py,sh,jar,php,rs setlocal cindent expandtab
+autocmd FileType yaml,yml,repos,toml,xml,urdf,launch setlocal ts=2 sts=2 sw=2 expandtab
 
 let g:hi_insert = 'highlight StatusLine guifg=darkblue guibg=darkyellow gui=none ctermfg=blue ctermbg=yellow cterm=none'
 let mapleader = "\<Space>"
