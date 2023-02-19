@@ -52,6 +52,7 @@ fi
 if type "tmux" > /dev/null 2>&1
 then
     alias t='tmux'
+    alias ta='tmux attach -t'
 fi
 # fzf
 if type "fzf" > /dev/null 2>&1
