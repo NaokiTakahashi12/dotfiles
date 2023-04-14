@@ -60,6 +60,7 @@ then
     alias ff='fzf --preview "bat  --color=always --style={header,grid} --line-range :150 {}"'
     alias fvi='vim $(ff)'
     alias fcat='fcat $(ff)'
+    alias fcd='cd `find * -type d | fzf`'
 fi
 # rsync
 if type "rsync" > /dev/null 2>&1

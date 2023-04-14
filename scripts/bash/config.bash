@@ -40,7 +40,8 @@ then
     export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:$HOME/.local/lib"
 fi
 # PS
-if [ $UID -eq 0 ]; then
+if [ $UID -eq 0 ];
+then
 	PS1="\[\e[1;31m\]\u\[\e[37m\]@\[\e[m\]\h\[\e[m\]:\[\e[37m\]\w\[\e[m\]\n \[\e[31m\]⬧\[\e[36m\]❯\[\e[35m\]❯\[\e[m\] "
 else
 	PS1="\[\e[1;m\]\u\[\e[37m\]@\[\e[m\]\h\[\e[m\]:\[\e[37m\]\w\[\e[m\]\n \[\e[31m\]⬧\[\e[36m\]❯\[\e[35m\]❯\[\e[m\] "
