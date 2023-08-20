@@ -2,6 +2,8 @@ scan_timeout = 100
 command_timeout = 1000
 
 add_newline = false
+
+[character]
 success_symbol = " [⬧](red)[❯](cyan)[❯](purple)"
 error_symbol = " [⬧](cyan)[❯](red)[❯](cyan)"
 
