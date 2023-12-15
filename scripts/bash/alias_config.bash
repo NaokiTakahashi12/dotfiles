@@ -31,7 +31,7 @@ fi
 # ls alternate
 if type "exa" > /dev/null 2>&1
 then
-    alias ll='exa -la --git'
+    alias ll='exa -lhabgHmu --git'
 else
     alias ll='ls -la'
 fi
@@ -66,4 +66,8 @@ fi
 if type "rsync" > /dev/null 2>&1
 then
     alias rsync='rsync --progress --exclude-from=${HOME}/.config/rsync'
+fi
+if type "ip" > /dev/null 2>&1
+then
+    alias ip='ip -c'
 fi
