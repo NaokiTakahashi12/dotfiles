@@ -53,3 +53,6 @@ disabled = true
 [shell]
 disabled = true
 
+[localip]
+disabled = false
+ssh_only = true
