@@ -1,4 +1,9 @@
-alias ls='ls -G'
+if [ -x /usr/bin/dircolors ]
+then
+    alias ls='ls --color=auto'
+else
+    alias ls='ls -G'
+fi
 alias l='ls -CF'
 alias la='ls -a'
 alias j='jobs'
