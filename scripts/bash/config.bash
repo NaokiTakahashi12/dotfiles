@@ -16,10 +16,17 @@ then
     export PATH="$PATH:$(brew --prefix)/bin"
     export PATH="$PATH:$(brew --prefix)//Cellar/cython/0.29.32*/bin"
     export PATH="$PATH:$(brew --prefix)/opt/qt@5/bin"
-    export LDFLAGS="$LDFLAGS -L$(brew --prefix)/opt/qt@5/lib"
     export CPPFLAGS="$CPPFLAGS:-I$(brew --prefix)/opt/qt@5/include"
     export PKG_CONFIG_PATH="$(brew --prefix)/opt/qt@5/lib/pkgconfig"
     export OPENSSL_ROOT_DIR="$(brew --prefix)/opt/openssl"
+    if [ -d "$(brew --prefix)/opt/qt@5/lib" ]
+    then
+        export LDFLAGS="$LDFLAGS -L$(brew --prefix)/opt/qt@5/lib"
+    fi
+    if [ -d "$(brew --prefix)/opt/qt@6/lib" ]
+    then
+        export LDFLAGS="$LDFLAGS -L$(brew --prefix)/opt/qt@6/lib"
+    fi
 fi
 # Rust
 if [ -f $HOME/.cargo/env ]
