@@ -90,6 +90,7 @@ set shiftwidth=4
 set softtabstop=4
 
 if has('nvim')
+    set mouse=
     set clipboard=unnamed
 else
     set clipboard=unnamed,autoselect
