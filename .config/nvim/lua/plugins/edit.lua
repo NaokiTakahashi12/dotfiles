@@ -74,23 +74,21 @@ return {
     dependencies = {
       'nvim-treesitter/nvim-treesitter'
     },
-    keys = { '<space>s' },
+    keys = { '<space>fm' },
     config = function()
-      require 'nvim-treesitter.configs'.setup {
-        ensure_installed = { 'c', 'cpp', 'rust', 'python', 'lua', 'vim', 'markdown' },
-      }
       require('treesj').setup {
         use_default_keymaps = false,
         check_syntax_error = true,
         max_join_length = 80,
       }
-      vim.keymap.set('n', '<leader>s', require('treesj').toggle)
+      vim.keymap.set('n', '<leader>fm', require('treesj').toggle)
     end,
   },
   {
     'stevearc/conform.nvim',
     enabled = false,
     version = 'v9.0.0',
+    -- version = 'v1.1.0',  -- for neovim v0.9.5
     config = function()
       require('conform').setup {
         format_on_save = {

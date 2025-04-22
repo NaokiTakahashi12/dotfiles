@@ -32,7 +32,7 @@ require("lazy").setup({
   -- colorscheme that will be used when installing plugins.
   -- install = { colorscheme = { "habamax" } },
   -- automatically check for plugin updates
-  checker = { enabled = true },
+  checker = { enabled = false },
 })
 
 vim.diagnostic.config {
@@ -75,8 +75,8 @@ vim.keymap.set("n", "<Leader>m", ":make<CR><CR><C-w><C-w>", keymap_opts)
 vim.keymap.set("i", "jj", "<Esc>", keymap_opts)
 vim.keymap.set("i", "JJ", "<Esc>", keymap_opts)
 
-vim.keymap.set("n", ";", ":", keymap_opts)
-vim.keymap.set("n", ":", ";", keymap_opts)
+vim.keymap.set("n", ";", ":")
+vim.keymap.set("n", ":", ";")
 
 vim.keymap.set("n", "+", "<C-a>", keymap_opts)
 vim.keymap.set("n", "-", "<C-x>", keymap_opts)
@@ -117,7 +117,7 @@ vim.opt.errorbells = false
 
 vim.opt.background = "dark"
 vim.opt.fileencodings = { "utf-8", "iso-2022-jp", "enc-jp", "cp932" }
-vim.opt.fileencoding = "utf-8"
+-- vim.opt.fileencoding = "utf-8"
 vim.opt.encoding = "utf-8"
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
@@ -151,7 +151,7 @@ vim.api.nvim_create_autocmd("QuickFixCmdPost", {
 })
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   pattern = "*",
-  command = "match ZenkakuSpace / /"
+  command = "match ZenkakuSpace /　/"
 })
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "c", "cpp", "cc", "cxx", "h", "hpp", "hxx", "hh", "lua", "yaml", "yml", "toml", "repos", "xml", "urdf", "launch", "perl", "html", "py", "sh", "jar", "php", "rs" },
