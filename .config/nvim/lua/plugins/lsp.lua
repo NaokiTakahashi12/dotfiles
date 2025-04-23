@@ -1,7 +1,7 @@
 return {
   {
     'neovim/nvim-lspconfig',
-    -- version = 'v1.1.0',  -- for neovim 0.9.5
+    -- version = 'v1.1.0',  -- for neovim v0.9.5
     version = 'v2.0.0',
     dependencies = {
       'williamboman/mason.nvim',
@@ -20,6 +20,7 @@ return {
         'clangd',
         'rust_analyzer',
         'ruff',
+        'lua_ls',
         'cmake',
         'jedi_language_server',
         'opencl_ls',
@@ -35,24 +36,20 @@ return {
         lspconfig[lsp].setup {
           on_attach = on_attach,
           capabilities = capabilities,
-        }
-      end
-      lspconfig.lua_ls.setup {
-        on_attach = on_attach,
-        capabilities = capabilities,
-        settings = {
-          Lua = {
-            completion = {
-              callSnippet = 'Replace',
-            },
-            diagnostics = {
-              globals = {
-                'vim',
+          settings = {
+            Lua = {
+              completion = {
+                callSnippet = 'Replace',
+              },
+              diagnostics = {
+                globals = {
+                  'vim',
+                },
               },
             },
           },
-        },
-      }
+        }
+      end
     end,
   },
 }

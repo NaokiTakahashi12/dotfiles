@@ -22,6 +22,7 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter",
+    -- version = "v0.9.3",  -- for neovim v0.9.5
     config = function()
       require('nvim-treesitter.configs').setup {
         ensure_installed = { 'c', 'cpp', 'rust', 'python', 'lua', 'vim', 'markdown' },
