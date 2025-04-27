@@ -9,7 +9,7 @@ return {
     -- version = 'v3.4.0',  -- for neovim v0.9.5
     dependencies = {
       { "github/copilot.vim" },
-      { "nvim-lua/plenary.nvim"},
+      { "nvim-lua/plenary.nvim" },
     },
     build = "make tiktoken",
     opts = {},

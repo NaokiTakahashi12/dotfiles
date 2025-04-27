@@ -1,7 +1,7 @@
 return {
   {
     'neovim/nvim-lspconfig',
-    -- version = 'v1.1.0', -- for neovim 0.9.5
+    -- version = 'v1.1.0', -- for neovim v0.9.5
     version = 'v2.0.0',
     dependencies = {
       'williamboman/mason.nvim',
@@ -16,6 +16,8 @@ return {
         'cmake',
         'jedi_language_server',
         'opencl_ls',
+        'arduino_language_server',
+        'harper_ls',
       }
 
       require('mason').setup({})

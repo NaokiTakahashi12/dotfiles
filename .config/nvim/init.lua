@@ -27,6 +27,7 @@ require("lazy").setup({
   spec = {
     -- add your plugins here
     { import = "plugins" },
+    { 'NLKNguyen/papercolor-theme' },
   },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
@@ -48,6 +49,8 @@ vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { no
 -- vim.cmd("colorscheme PaperColor")
 -- vim.cmd("colorscheme Tomorrow-Night")
 vim.cmd("colorscheme quiet")
+
+vim.cmd("let g:PaperColor_Theme_Options = { 'theme': { 'default.dark': { 'transparent_background': 1 }}}")
 
 -- key mappings
 local keymap_opts = { silent = true }
@@ -134,11 +137,11 @@ vim.opt.makeprg = "cmake -S . -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON && cma
 vim.cmd("set t_Co=256")
 vim.opt.laststatus = 2
 vim.cmd(
-  [[set statusline=%<\ %{expand('%:p:h')}/%{expand('%:p:t')}\ %m%r%w%h\ %=\ Encode=%{&fenc!=''?&fenc:&enc}\ \|\ Format=%{&ff}\ \|\ FileType=%Y\ \|\ Char=0x%02.2B\ \|\ Position=%l/%L,(%v)\ \|\ Persent=%3p%%]])
+  [[set statusline=%<\ %{expand('%:p:h')}/%{expand('%:p:t')}\ %m%r%w%h\❱\ %=\❰\ Encode=%{&fenc!=''?&fenc:&enc}\ \❰\ Format=%{&ff}\ \❰\ FileType=%Y\ \❰\ Char=0x%02.2B\ \❰\ Position=%l/%L,(%v)\ \❰\ Persent=%3p%%]])
 
 -- highlights
 vim.cmd("highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=#666666")
-vim.cmd("highlight StatusLine term=NONE cterm=NONE ctermfg=black ctermbg=white")
+-- vim.cmd("highlight StatusLine term=NONE cterm=NONE ctermfg=black ctermbg=white")
 
 -- autocmd
 vim.api.nvim_create_autocmd("QuickFixCmdPost", {
@@ -153,6 +156,11 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   pattern = "*",
   command = "match ZenkakuSpace /　/"
 })
+vim.api.nvim_create_autocmd("BufReadPost", {
+  pattern = "*",
+  command = "if line(\"'\\\"\") > 0 && line(\"'\\\"\") <= line(\"$\") | exe \"normal! g`\\\"\" | endif",
+})
+
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "c", "cpp", "cc", "cxx", "h", "hpp", "hxx", "hh", "lua", "yaml", "yml", "toml", "repos", "xml", "urdf", "launch", "perl", "html", "py", "sh", "jar", "php", "rs" },
   callback = function()

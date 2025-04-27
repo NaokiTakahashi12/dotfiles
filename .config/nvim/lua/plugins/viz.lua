@@ -17,12 +17,18 @@ return {
     'j-hui/fidget.nvim',
     version = 'v1.6.1',
     config = function()
-      require('fidget').setup({})
+      require('fidget').setup {
+        progress = {
+          display = {
+          },
+        },
+      }
+      vim.notify = require("fidget.notification").notify
     end,
   },
   {
     "nvim-treesitter/nvim-treesitter",
-    -- version = "v0.9.3",  -- for neovim v0.9.5
+    -- version = "v0.9.3", -- for neovim v0.9.5
     config = function()
       require('nvim-treesitter.configs').setup {
         ensure_installed = { 'c', 'cpp', 'rust', 'python', 'lua', 'vim', 'markdown' },
@@ -34,15 +40,12 @@ return {
   },
   {
     "folke/flash.nvim",
-    enabled = false,
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    },
+    enabled = true,
     opts = {},
     keys = {
-      {
-        "s",
-        mode = { "n", "x", "o" },
-        function() require("flash").jump() end,
-        desc = "Flash",
-      },
       {
         "S",
         mode = { "n", "x", "o" },
@@ -74,7 +77,8 @@ return {
     opts = {},
     cmd = "Trouble",
     config = function()
-      require("trouble").setup({})
+      require("trouble").setup {
+      }
     end,
   },
   {
@@ -82,6 +86,24 @@ return {
     opts = {},
     config = function()
       require("cscope_maps").setup {
+      }
+    end,
+  },
+  {
+    'romgrk/barbar.nvim',
+    version = '^1.0.0', -- optional: only update when a new 1.x version is released
+    dependencies = {
+      'nvim-tree/nvim-web-devicons',
+    },
+    config = function()
+      require("barbar").setup {
+        clickable = false,
+        icons = {
+          filetype = {
+            enabled = false,
+          },
+          button = "o",
+        }
       }
     end,
   },

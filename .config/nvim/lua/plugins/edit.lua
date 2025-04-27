@@ -88,7 +88,7 @@ return {
     'stevearc/conform.nvim',
     enabled = true,
     version = 'v9.0.0',
-    -- version = 'v1.1.0',  -- for neovim v0.9.5
+    -- version = 'v7.1.0', -- for neovim v0.9.5
     config = function()
       require('conform').setup {
         format_on_save = {
