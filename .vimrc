@@ -115,6 +115,11 @@ let g:hi_insert = 'highlight StatusLine guifg=darkblue guibg=darkyellow gui=none
 let _curfile=expand("%:r")
 if _curfile == 'Makefile'
     set noexpandtab
+elseif _curfile == 'CMakeLists'
+    set expandtab
+    set tabstop=2
+    set shiftwidth=2
+    set softtabstop=2
 endif
 
 
