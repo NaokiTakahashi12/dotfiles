@@ -89,14 +89,42 @@ return {
     enabled = true,
     version = 'v9.0.0',
     -- version = 'v7.1.0', -- for neovim v0.9.5
+    opts = {
+      format_on_save = {
+        timeout_ms = 2000,
+        quiet = false,
+        lsp_fallback = true,
+      },
+      formatters_by_ft = {
+        c = { 'clang-format' },
+        cpp = { 'clang-format' },
+      }
+    },
+  },
+  {
+    'p00f/clangd_extensions.nvim',
     config = function()
-      require('conform').setup {
-        format_on_save = {
-          timeout_ms = 2000,
-          lsp_fallback = true,
-          quiet = false,
+      require('clangd_extensions').setup {
+        ast = {
+          role_icons = {
+            type = "🄣",
+            declaration = "🄓",
+            expression = "🄔",
+            statement = ";",
+            specifier = "🄢",
+            ["template argument"] = "🆃",
+          },
+          kind_icons = {
+            Compound = "🄲",
+            Recovery = "🅁",
+            TranslationUnit = "🅄",
+            PackExpansion = "🄿",
+            TemplateTypeParm = "🅃",
+            TemplateTemplateParm = "🅃",
+            TemplateParamObject = "🅃",
+          },
         },
       }
     end,
-  },
+  }
 }
