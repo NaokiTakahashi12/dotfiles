@@ -111,6 +111,7 @@ vim.opt.autoread = true
 vim.opt.autoindent = true
 vim.opt.wildignorecase = true
 vim.opt.expandtab = true
+vim.signcolumn = true
 
 vim.opt.compatible = false
 vim.opt.swapfile = false

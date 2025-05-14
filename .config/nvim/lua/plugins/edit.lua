@@ -126,5 +126,12 @@ return {
         },
       }
     end,
-  }
+  },
+  {
+    'echasnovski/mini.surround',
+    version = 'v0.15.0',
+    config = function()
+      require('mini.surround').setup({})
+    end,
+  },
 }
