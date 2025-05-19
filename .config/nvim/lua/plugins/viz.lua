@@ -90,24 +90,6 @@ return {
     end,
   },
   {
-    'romgrk/barbar.nvim',
-    version = '^1.0.0', -- optional: only update when a new 1.x version is released
-    dependencies = {
-      'nvim-tree/nvim-web-devicons',
-    },
-    config = function()
-      require("barbar").setup {
-        clickable = false,
-        icons = {
-          filetype = {
-            enabled = false,
-          },
-          button = "o",
-        }
-      }
-    end,
-  },
-  {
     'sphamba/smear-cursor.nvim',
     version = 'v0.4.6',
     opts = {
@@ -116,6 +98,7 @@ return {
       stiffness_insert_mode = 0.6,
       trailing_stiffness_insert_mode = 0.6,
       distance_stop_animating = 0.5,
+      time_interval = 8,
     },
   },
 }

@@ -134,11 +134,10 @@ vim.opt.scrolloff = 5
 vim.cmd("set visualbell t_vb=")
 vim.opt.virtualedit = "onemore"
 vim.opt.wildmode = "list:full"
-vim.opt.makeprg = "cmake -S . -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON && cmake --build build"
 vim.cmd("set t_Co=256")
 vim.opt.laststatus = 2
 vim.cmd(
-  [[set statusline=%<\ %{expand('%:p:h')}/%{expand('%:p:t')}\ %m%r%w%h\❱\ %=\❰\ Encode=%{&fenc!=''?&fenc:&enc}\ \❰\ Format=%{&ff}\ \❰\ FileType=%Y\ \❰\ Char=0x%02.2B\ \❰\ Position=%l/%L,(%v)\ \❰\ Persent=%3p%%]])
+  [[set statusline=%<\ %{expand('%:p:h')}/%{expand('%:p:t')}\ %M%R%W%H\❱\ %=\❰\ Encode=%{&fenc!=''?&fenc:&enc}\ \❰\ Format=%{&ff}\ \❰\ FileType=%Y\ \❰\ Char=0x%02.2B\ \❰\ Position=%l/%L,(%v)]])
 
 -- highlights
 vim.cmd("highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=#666666")
@@ -171,6 +170,14 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.expandtab = true
   end
 })
+
+local cmd = "make"
+if vim.fn.filereadable("Makefile") == 1 then
+  cmd = "make"
+elseif vim.fn.filereadable("CMakeLists.txt") == 1 then
+  cmd = "cmake -S . -B build -D CMAKE_EXPORT_COMPILE_COMMANDS=ON && cmake --build build"
+end
+vim.opt.makeprg = cmd
 
 -- highlight for insert mode
 vim.g.hi_insert = 'highlight StatusLine guifg=darkblue guibg=darkyellow gui=none ctermfg=blue ctermbg=yellow cterm=none'

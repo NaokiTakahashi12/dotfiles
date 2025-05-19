@@ -4,8 +4,14 @@ return {
     -- version = 'v1.1.0', -- for neovim v0.9.5
     version = 'v2.0.0',
     dependencies = {
-      'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim',
+      {
+        'williamboman/mason.nvim',
+        version = '1.11.0',
+      },
+      {
+        'williamboman/mason-lspconfig.nvim',
+        version = '1.32.0',
+      },
     },
     config = function()
       local servers = {
