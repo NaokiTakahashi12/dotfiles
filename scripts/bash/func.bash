@@ -16,3 +16,23 @@ function progress_bar {
         printf "\n"
     fi
 }
+
+function cbuild {
+  local build_use_thread=$(( `nproc` / 2 + 1))
+  if command -v cmake &> /dev/null; then
+    if [ -f "CMakeLists.txt" ]; then
+      cmake \
+        -S . \
+        -B build \
+        -D CMKAE_BUILD_TYPE=RelWithDebInfo \
+        -D CMAKE_EXPORT_COMPILE_COMMANDS=ON
+    fi
+    if [ -f "build/CMakeCache.txt" ]; then
+      cmake --build build -j $build_use_thread
+    fi
+  elif command -v make &> /dev/null; then
+    if [ -f "Makefile" ]; then
+      make -j $build_use_thread
+    fi
+  fi
+}
