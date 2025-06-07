@@ -92,6 +92,7 @@ return {
   {
     'sphamba/smear-cursor.nvim',
     version = 'v0.4.6',
+    enabled = false,
     opts = {
       stiffness = 0.8,
       trailing_stiffness = 0.5,

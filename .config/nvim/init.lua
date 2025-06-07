@@ -196,3 +196,27 @@ vim.api.nvim_create_autocmd("BufRead", {
     end
   end,
 })
+
+local group = vim.api.nvim_create_augroup("vimrc-local", { clear = true })
+
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPost" }, {
+  group = group,
+  callback = function()
+    local loc = vim.fn.expand("<afile>:p:h")
+    vimrc_local(loc)
+  end,
+})
+
+function vimrc_local(loc)
+  local files = vim.fn.findfile(".vimrc.local", vim.fn.escape(loc, " ") .. ";", -1)
+  local readable_files = {}
+  for _, file in ipairs(files) do
+    if vim.fn.filereadable(file) == 1 then
+      table.insert(readable_files, file)
+    end
+  end
+  for i = #readable_files, 1, -1 do
+    local file = readable_files[i]
+    vim.cmd("source " .. file)
+  end
+end
