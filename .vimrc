@@ -99,7 +99,7 @@ highlight StatusLine   term=NONE cterm=NONE ctermfg=black ctermbg=white
 
 autocmd quickfixcmdpost *grep* cwindow
 autocmd quickfixcmdpost *make* copen
-autocmd BufNewFile,BufRead * match ZenkakuSpace / /
+autocmd BufNewFile,BufRead * match ZenkakuSpace /　/
 autocmd FileType c,cpp,cc,cxx,h,hpp,hxx,hh setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType lua setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType yaml,yml,toml,repos setlocal ts=2 sts=2 sw=2 expandtab

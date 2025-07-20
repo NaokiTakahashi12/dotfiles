@@ -162,7 +162,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "c", "cpp", "cc", "cxx", "h", "hpp", "hxx", "hh", "lua", "yaml", "yml", "toml", "repos", "xml", "urdf", "launch", "perl", "html", "py", "sh", "jar", "php", "rs" },
+  pattern = { "c", "cpp", "cc", "cxx", "h", "hpp", "hxx", "hh", "lua", "yaml", "yml", "toml", "repos", "xml", "urdf", "launch", "perl", "html", "py", "sh", "jar", "php", "rs", "ino" },
   callback = function()
     vim.opt_local.tabstop = 2
     vim.opt_local.shiftwidth = 2

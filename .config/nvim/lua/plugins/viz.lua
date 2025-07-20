@@ -74,6 +74,9 @@ return {
   },
   {
     "folke/trouble.nvim",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    },
     opts = {},
     cmd = "Trouble",
     config = function()
@@ -90,16 +93,30 @@ return {
     end,
   },
   {
-    'sphamba/smear-cursor.nvim',
-    version = 'v0.4.6',
-    enabled = false,
-    opts = {
-      stiffness = 0.8,
-      trailing_stiffness = 0.5,
-      stiffness_insert_mode = 0.6,
-      trailing_stiffness_insert_mode = 0.6,
-      distance_stop_animating = 0.5,
-      time_interval = 8,
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.8',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
     },
+    config = function()
+      require("telescope").setup {
+      }
+      local builtin = require('telescope.builtin')
+      vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
+      vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
+      vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
+      vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+    end,
+  },
+  {
+    "folke/todo-comments.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "folke/trouble.nvim",
+    },
+    config = function()
+      require("todo-comments").setup {
+      }
+    end,
   },
 }
