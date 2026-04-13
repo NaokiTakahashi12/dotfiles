@@ -73,7 +73,6 @@ vim.keymap.set("n", "<Leader>L", "<C-w>L", keymap_opts)
 vim.keymap.set("n", "<Leader>t", ":tabnew<CR>", keymap_opts)
 vim.keymap.set("n", "<Leader>b", ":tab ba<CR>", keymap_opts)
 vim.keymap.set("n", "<Leader>[", ":term<CR>", keymap_opts)
-vim.keymap.set("n", "<Leader>m", ":make<CR><CR><C-w><C-w>", keymap_opts)
 
 vim.keymap.set("i", "jj", "<Esc>", keymap_opts)
 vim.keymap.set("i", "JJ", "<Esc>", keymap_opts)
