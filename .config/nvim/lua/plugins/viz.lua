@@ -49,35 +49,99 @@ return {
   },
   {
     "folke/flash.nvim",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
+    event = "VeryLazy",
+    opts = {
+      modes = {
+        search = {
+          enabled = false,
+        },
+        char = {
+          enabled = true,
+          jump_labels = true,
+          multi_line = true,
+        },
+      },
+      jump = {
+        autojump = false,
+      },
+      label = {
+        uppercase = false,
+        rainbow = {
+          enabled = false,
+        },
+      },
     },
-    enabled = true,
-    opts = {},
     keys = {
+      {
+        "s",
+        mode = { "n", "x", "o" },
+        function()
+          require("flash").jump()
+        end,
+        desc = "Flash jump",
+      },
       {
         "S",
         mode = { "n", "x", "o" },
-        function() require("flash").treesitter() end,
-        desc = "Flash Treesitter",
+        function()
+          require("flash").jump({
+            search = {
+              mode = "search",
+              max_length = 0,
+            },
+            label = {
+              after = { 0, 0 },
+            },
+            pattern = "^",
+          })
+        end,
+        desc = "Flash jump line start",
       },
       {
-        "r",
-        mode = "o",
-        function() require("flash").remote() end,
-        desc = "Remote Flash",
+        "f",
+        mode = { "n", "x", "o" },
+        function()
+          require("flash").jump({
+            mode = "char",
+            search = { forward = true, wrap = false, multi_line = false },
+          })
+        end,
+        desc = "Flash forward char",
       },
       {
-        "R",
-        mode = { "o", "x" },
-        function() require("flash").treesitter_search() end,
-        desc = "Treesitter Search",
+        "F",
+        mode = { "n", "x", "o" },
+        function()
+          require("flash").jump({
+            mode = "char",
+            search = { forward = false, wrap = false, multi_line = false },
+          })
+        end,
+        desc = "Flash backward char",
       },
       {
-        "<c-s>",
-        mode = { "c" },
-        function() require("flash").toggle() end,
-        desc = "Toggle Flash Search",
+        "t",
+        mode = { "n", "x", "o" },
+        function()
+          require("flash").jump({
+            mode = "char",
+            search = { forward = true, wrap = false, multi_line = false },
+            jump = { offset = -1 },
+          })
+        end,
+        desc = "Flash till forward char",
+      },
+      {
+        "T",
+        mode = { "n", "x", "o" },
+        function()
+          require("flash").jump({
+            mode = "char",
+            search = { forward = false, wrap = false, multi_line = false },
+            jump = { offset = 1 },
+          })
+        end,
+        desc = "Flash till backward char",
       },
     },
   },
@@ -121,11 +185,22 @@ return {
     "folke/todo-comments.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "folke/trouble.nvim",
     },
     config = function()
       require("todo-comments").setup {
       }
     end,
   },
+  {
+    "preservim/tagbar",
+    cmd = { "TagbarToggle", "TagbarOpen", "TagbarClose" },
+    keys = {
+      { "<leader>c", "<cmd>TagbarToggle<CR>", desc = "Toggle Tagbar" },
+    },
+    init = function()
+      vim.g.tagbar_width = 40
+      vim.g.tagbar_sort = 0
+      vim.g.tagbar_autofocus = 1
+    end,
+  }
 }

@@ -2,6 +2,9 @@ return {
   {
     'github/copilot.vim',
     version = 'v1.45.0',
+    init = function()
+      vim.g.copilot_no_tab_map = true
+    end,
   },
   {
     "CopilotC-Nvim/CopilotChat.nvim",
